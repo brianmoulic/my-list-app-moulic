@@ -18,6 +18,13 @@ if (req.method === "GET" && url === "/health") {
 return sendJson(res, 200, { status: "ok" });
 }
 if (req.method === "GET" && url === "/api/info") {
+
+    if (req.method === "GET" && url === "/api/about") {
+return sendJson(res, 200, {
+owner: OWNER,
+purpose: "To make a new branch?",
+});
+}
 return sendJson(res, 200, {
 title: APP_TITLE,
 itemName: ITEM_NAME,
