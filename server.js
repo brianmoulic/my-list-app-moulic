@@ -6,7 +6,7 @@ const APP_TITLE = "My to Do List";
 const ITEM_NAME = "exercise";
 const OWNER = "Brian Moulic";
 // ===================================================
-const items = [{ id: 1, text: "exercise " + ITEM_NAME }];
+const items = [{ id: 1, text: "Squat " + ITEM_NAME }];
 function sendJson(res, status, data) {
 res.writeHead(status, { "Content-Type": "application/json" });
 res.end(JSON.stringify(data));
@@ -25,6 +25,14 @@ owner: OWNER,
 message: process.env.APP_MESSAGE || "Hello from my own app!",
 });
 }
+
+if (req.method === "GET" && url === "/api/about") {
+return sendJson(res, 200, {
+owner: OWNER,
+purpose: "To add new branch?",
+});
+}
+
 if (url === "/api/items" && req.method === "GET") {
 return sendJson(res, 200, items);
 }
